@@ -18,12 +18,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     @IBAction func pressedBack(_ sender: UIBarButtonItem) {
+        self.webView.goBack()
     }
     
     @IBAction func pressedRefresh(_ sender: UIBarButtonItem) {
+        self.webView.reload()
     }
     
     @IBAction func pressedForward(_ sender: UIBarButtonItem) {
+        self.webView.goForward()
     }
     
     override func viewDidLoad() {
@@ -37,7 +40,11 @@ class ViewController: UIViewController {
         
         let firstURL: URL?
         
-        firstURL = URL(string: "https://www.apple.com")
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let url = appDelegate.lastURL{
+            firstURL = url
+        }else{
+            firstURL = URL(string: "https://www.apple.com")
+        }
         
         guard let url = firstURL else {
             //invalid URL
@@ -78,6 +85,10 @@ extension ViewController: WKNavigationDelegate{
             }
                 
             self.navigationItem.title = title
+        }
+        
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.lastURL = webView.url
         }
     }
     
