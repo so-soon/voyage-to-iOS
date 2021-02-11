@@ -48,19 +48,35 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="W8V-mB-xod"/>
                         <barButtonItem title="Item" image="chevron.backward" catalog="system" id="S1t-gj-2FU">
                             <color key="tintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="pressedBack:" destination="BYZ-38-t0r" id="Dmd-RL-W4O"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="NPd-8Y-nRm"/>
                         <barButtonItem title="Item" image="repeat" catalog="system" id="0Cf-qG-O5q">
                             <color key="tintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="pressedRefresh:" destination="BYZ-38-t0r" id="ePQ-Ir-ke8"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="z0e-lo-wpX"/>
                         <barButtonItem title="Item" image="chevron.forward" catalog="system" id="u8u-fu-Xzm">
                             <color key="tintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="pressedForward:" destination="BYZ-38-t0r" id="QgG-z5-jZL"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="b5B-bq-efx"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="zjz-s3-skm"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="btnBack" destination="S1t-gj-2FU" id="IaY-go-ASV"/>
+                        <outlet property="btnForward" destination="u8u-fu-Xzm" id="QYA-cc-4Qc"/>
+                        <outlet property="btnRefresh" destination="0Cf-qG-O5q" id="gPk-Of-WaD"/>
+                        <outlet property="loadingIndicator" destination="w4K-cB-y5u" id="OtJ-Uh-a5f"/>
+                        <outlet property="webView" destination="de2-zw-akT" id="aw6-P0-SYB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
