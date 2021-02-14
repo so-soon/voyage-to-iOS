@@ -13,6 +13,7 @@
 		E3A5CD4825D90BBE0057B3C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A5CD4625D90BBE0057B3C6 /* Main.storyboard */; };
 		E3A5CD4A25D90BBF0057B3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A5CD4925D90BBF0057B3C6 /* Assets.xcassets */; };
 		E3A5CD4D25D90BBF0057B3C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A5CD4B25D90BBF0057B3C6 /* LaunchScreen.storyboard */; };
+		E3A5CD5725D918A30057B3C6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A5CD5625D918A30057B3C6 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E3A5CD4925D90BBF0057B3C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3A5CD4C25D90BBF0057B3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3A5CD4E25D90BBF0057B3C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3A5CD5625D918A30057B3C6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A5CD5725D918A30057B3C6 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				E3A5CD3F25D90BBE0057B3C6 /* SimpleWeb */,
 				E3A5CD3E25D90BBE0057B3C6 /* Products */,
+				E3A5CD5525D918A20057B3C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +69,14 @@
 				E3A5CD4E25D90BBF0057B3C6 /* Info.plist */,
 			);
 			path = SimpleWeb;
+			sourceTree = "<group>";
+		};
+		E3A5CD5525D918A20057B3C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3A5CD5625D918A30057B3C6 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
