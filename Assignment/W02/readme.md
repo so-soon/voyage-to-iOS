@@ -9,7 +9,7 @@
   - 할일 데이터는 당연히 앱이 종료되어도 보존되어야 함.
   - 유저가 알람여부를 yes로 설정할 경우, 해당 시간에 맞춰 알람(noti)를 날려주어야 함.
 
-  > Hint : UserNotifications, dateFormatter, navigation controller, segue, Codable
+  > Hint : TableView,UserNotifications, dateFormatter, navigation controller, segue, Codable
 
   > - 서로 배우기 위하여 따로 이미지로 UI를 제한하지는 않았습니다. 각자 창의적이고 효과적인 UI 기대할게요!(나부터..)
   >
