@@ -46,7 +46,7 @@
                                         <connections>
                                             <outlet property="date" destination="JxX-LB-DFl" id="Twb-Jl-J8s"/>
                                             <outlet property="title" destination="Xf1-ho-O3e" id="I8a-6Z-kmJ"/>
-                                            <segue destination="pAN-dM-pEX" kind="presentation" id="8EG-DQ-0HY"/>
+                                            <segue destination="Lua-4O-oFE" kind="presentation" id="El4-j2-vop"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -64,7 +64,7 @@
                     <navigationItem key="navigationItem" title="Todos" id="q8K-18-Fzr">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="Y81-U1-6f5">
                             <connections>
-                                <segue destination="vd4-8N-PeR" kind="show" id="ce2-qM-cM8"/>
+                                <segue destination="vd4-8N-PeR" kind="show" id="ulq-ku-84T"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -139,33 +139,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mi1-N9-lz2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="892.63392857142856"/>
+            <point key="canvasLocation" x="903" y="833"/>
         </scene>
-        <!--Add Todo-->
-        <scene sceneID="L5l-Rk-4Iv">
+        <!--View Controller-->
+        <scene sceneID="SY3-Zr-NjW">
             <objects>
-                <viewController title="Add Todo" id="pAN-dM-pEX" customClass="DetailViewController" customModule="MyTodos" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ko8-Nm-kzS">
+                <viewController id="Lua-4O-oFE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aCi-d1-7Rn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4e-fU-pMJ">
-                                <rect key="frame" x="376" y="20" width="18" height="22"/>
-                                <state key="normal" image="pencil" catalog="system"/>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Nam-mU-2g1"/>
+                        <viewLayoutGuide key="safeArea" id="Qla-PV-Hec"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Nam-mU-2g1" firstAttribute="trailing" secondItem="b4e-fU-pMJ" secondAttribute="trailing" constant="20" id="CyX-ro-eUL"/>
-                            <constraint firstItem="b4e-fU-pMJ" firstAttribute="top" secondItem="Nam-mU-2g1" secondAttribute="top" constant="20" id="j6w-Da-DAh"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Wwh-oT-rVo"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="egs-mI-HzG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X1N-ce-HxF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="893"/>
+            <point key="canvasLocation" x="1681" y="832"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rqR-xY-g6e">
@@ -187,7 +176,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

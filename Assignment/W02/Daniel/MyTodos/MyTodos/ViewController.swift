@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
+    private var todoList = [TodoItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +18,11 @@ class ViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         
-        // Do any additional setup after loading the view.
+        todoList.append(TodoItem(title_text:"Memo1", memo:"TestMemo", isNotify: false, date: Date()))
+        todoList.append(TodoItem(title_text:"Memo2", memo:"TestMemo2", isNotify: false, date: Date()))
+        todoList.append(TodoItem(title_text:"Memo3", memo:"TestMemo3", isNotify: false, date: Date()))
+        todoList.append(TodoItem(title_text:"Memo4", memo:"TestMemo4", isNotify: false, date: Date()))
+        todoList.append(TodoItem(title_text:"Memo5", memo:"TestMemo5", isNotify: false, date: Date()))
     }
 
 
@@ -25,14 +30,16 @@ class ViewController: UIViewController {
 
 extension ViewController :UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return todoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! TableCell
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        cell.title.text = "hi"
-        cell.date.text = "nice to meet you"
+        cell.title.text = todoList[indexPath.row].title_text
+        cell.date.text = dateFormatter.string(from:todoList[indexPath.row].date)
         return cell
     }
 }
