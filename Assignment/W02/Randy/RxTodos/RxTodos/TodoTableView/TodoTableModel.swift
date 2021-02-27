@@ -16,7 +16,7 @@ struct TodoData : Codable {
 }
 
 class TodoTableModel {
-    var todoDataArray = [TodoData]()
+    var todoDataArray = [TodoData(id: "asd", title: "Asd", desc: "asd", date: Date(), shouldNotify: true)]
     
     func loadTodoDataFromJSON() -> Bool{
         
