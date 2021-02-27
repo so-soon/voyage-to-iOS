@@ -10,5 +10,11 @@ import RxCocoa
 import RxSwift
 
 class TodoTableViewModel {
+    init() {
         
+    }
+    
+    deinit {
+        
+    }
 }
