@@ -23,7 +23,7 @@ class TodoTableViewController: UIViewController {
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactiveBindUI()
+
 
         // Do any additional setup after loading the view.
     }
@@ -43,17 +43,19 @@ class TodoTableViewController: UIViewController {
         guard let detailVC = segue.destination as? TodoDetailViewController else {return}
         
         viewModel.cellDataForNextViewOb
+            .debug("Rx - cellDataForNextViewOb")
             .bind(to: detailVC.viewModel.cellDataFromTableView)
             .disposed(by: bag)
     }
     
     private func reactiveBindUI(){
         todoTableView.rx.itemSelected
+            .debug("Rx - itemSelected")
             .map({[weak self] in
                 self?.todoTableView.deselectRow(at: $0, animated: true)
                 return $0.row
             })
-            .bind(to: viewModel.pressedCellOb)
+            .bind(to: viewModel.pressedCellIndexOb)
             .disposed(by: bag)
         
         viewModel.cellDataForTableViewOb

@@ -10,5 +10,6 @@ import RxCocoa
 import RxSwift
 
 class TodoDetailViewModel {
+    //MARK:- Observable
     let cellDataFromTableView : PublishSubject<TodoData> = PublishSubject()
 }

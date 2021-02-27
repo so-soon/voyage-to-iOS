@@ -37,6 +37,7 @@ class TodoDetailViewController: UIViewController {
     
     private func reactiveBindUI(){
         viewModel.cellDataFromTableView
+            .debug("Rx - cellDataFromTableView")
             .subscribe(onNext: {
                 [weak self] data in
                 self?.titleLabel.text = data.title

@@ -22,8 +22,8 @@ class TodoTableViewModel {
     let model = TodoTableModel()
     var bag = DisposeBag()
     
-    //MARK:- BehaviorSubject
-    let pressedCellOb : PublishSubject<Int> = PublishSubject()
+    //MARK:- Observable
+    let pressedCellIndexOb : PublishSubject<Int> = PublishSubject()
     let cellDataForTableViewOb : BehaviorRelay<[TodoData]> = BehaviorRelay(value: [])
     
     let cellDataForNextViewOb : PublishSubject<TodoData> = PublishSubject()
@@ -33,7 +33,7 @@ class TodoTableViewModel {
             .bind(to: cellDataForTableViewOb)
             .disposed(by: bag)
         
-        pressedCellOb
+        pressedCellIndexOb
             .map(getCellData)
             .bind(to: cellDataForNextViewOb)
             .disposed(by: bag)
