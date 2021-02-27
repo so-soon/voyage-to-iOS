@@ -3,16 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		259C605C25EA39EA00400CC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C605B25EA39EA00400CC8 /* AppDelegate.swift */; };
 		259C605E25EA39EA00400CC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C605D25EA39EA00400CC8 /* SceneDelegate.swift */; };
-		259C606025EA39EA00400CC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C605F25EA39EA00400CC8 /* ViewController.swift */; };
 		259C606325EA39EA00400CC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259C606125EA39EA00400CC8 /* Main.storyboard */; };
 		259C606525EA39EC00400CC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259C606425EA39EC00400CC8 /* Assets.xcassets */; };
 		259C606825EA39EC00400CC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259C606625EA39EC00400CC8 /* LaunchScreen.storyboard */; };
+		259C607E25EA4CA200400CC8 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C607D25EA4CA200400CC8 /* TodoTableViewController.swift */; };
+		259C608125EA4CB000400CC8 /* TodoTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C608025EA4CB000400CC8 /* TodoTableViewModel.swift */; };
+		259C608525EA4CBB00400CC8 /* TodoTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C608425EA4CBB00400CC8 /* TodoTableModel.swift */; };
 		E32F9A5DE3E14BF723AEF236 /* Pods_RxTodos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC53262D5D0FE348698C9DC /* Pods_RxTodos.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,11 +23,13 @@
 		259C605825EA39EA00400CC8 /* RxTodos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxTodos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259C605B25EA39EA00400CC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		259C605D25EA39EA00400CC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		259C605F25EA39EA00400CC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		259C606225EA39EA00400CC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		259C606425EA39EC00400CC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		259C606725EA39EC00400CC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		259C606925EA39EC00400CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		259C607D25EA4CA200400CC8 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
+		259C608025EA4CB000400CC8 /* TodoTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewModel.swift; sourceTree = "<group>"; };
+		259C608425EA4CBB00400CC8 /* TodoTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableModel.swift; sourceTree = "<group>"; };
 		4FC53262D5D0FE348698C9DC /* Pods_RxTodos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxTodos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4883D2735C5698E473E1575 /* Pods-RxTodos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTodos.release.xcconfig"; path = "Target Support Files/Pods-RxTodos/Pods-RxTodos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,9 +67,10 @@
 		259C605A25EA39EA00400CC8 /* RxTodos */ = {
 			isa = PBXGroup;
 			children = (
+				259C607725EA4C4F00400CC8 /* TodoDetailView */,
+				259C607625EA4C4300400CC8 /* TodoTableView */,
 				259C605B25EA39EA00400CC8 /* AppDelegate.swift */,
 				259C605D25EA39EA00400CC8 /* SceneDelegate.swift */,
-				259C605F25EA39EA00400CC8 /* ViewController.swift */,
 				259C606125EA39EA00400CC8 /* Main.storyboard */,
 				259C606425EA39EC00400CC8 /* Assets.xcassets */,
 				259C606625EA39EC00400CC8 /* LaunchScreen.storyboard */,
@@ -74,13 +79,29 @@
 			path = RxTodos;
 			sourceTree = "<group>";
 		};
+		259C607625EA4C4300400CC8 /* TodoTableView */ = {
+			isa = PBXGroup;
+			children = (
+				259C607D25EA4CA200400CC8 /* TodoTableViewController.swift */,
+				259C608025EA4CB000400CC8 /* TodoTableViewModel.swift */,
+				259C608425EA4CBB00400CC8 /* TodoTableModel.swift */,
+			);
+			path = TodoTableView;
+			sourceTree = "<group>";
+		};
+		259C607725EA4C4F00400CC8 /* TodoDetailView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodoDetailView;
+			sourceTree = "<group>";
+		};
 		9B0B957CAD7C79BD0F6E6CFB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				1F36C8D5050EFE480990D34D /* Pods-RxTodos.debug.xcconfig */,
 				E4883D2735C5698E473E1575 /* Pods-RxTodos.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -206,9 +227,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				259C606025EA39EA00400CC8 /* ViewController.swift in Sources */,
 				259C605C25EA39EA00400CC8 /* AppDelegate.swift in Sources */,
+				259C608125EA4CB000400CC8 /* TodoTableViewModel.swift in Sources */,
+				259C607E25EA4CA200400CC8 /* TodoTableViewController.swift in Sources */,
 				259C605E25EA39EA00400CC8 /* SceneDelegate.swift in Sources */,
+				259C608525EA4CBB00400CC8 /* TodoTableModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
