@@ -23,7 +23,7 @@ class TodoTableViewController: UIViewController {
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        reactiveBindUI()
 
         // Do any additional setup after loading the view.
     }
@@ -33,25 +33,38 @@ class TodoTableViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         reactiveBindUI()
-        todoTableView.reloadData()
+        
+        todoTableView.reloadSections(IndexSet(integer: 0), with: UITableView.RowAnimation.automatic)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? TodoDetailViewController else {return}
+        
+        viewModel.cellDataForNextViewOb
+            .bind(to: detailVC.viewModel.cellDataFromTableView)
+            .disposed(by: bag)
     }
     
     private func reactiveBindUI(){
         todoTableView.rx.itemSelected
-            .map({$0.row})
+            .map({[weak self] in
+                self?.todoTableView.deselectRow(at: $0, animated: true)
+                return $0.row
+            })
             .bind(to: viewModel.pressedCellOb)
             .disposed(by: bag)
         
-        viewModel.cellDataOb
+        viewModel.cellDataForTableViewOb
             .bind(to: todoTableView.rx.items(cellIdentifier: "TodoCell")){
                 (index, model, cell) in
                 cell.textLabel?.text = model.title
                 cell.detailTextLabel?.text = model.desc
+                
             }.disposed(by: bag)
         
     }
-    
     
 
 }

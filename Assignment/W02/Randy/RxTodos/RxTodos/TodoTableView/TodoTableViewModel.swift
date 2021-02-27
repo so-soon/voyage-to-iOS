@@ -24,25 +24,30 @@ class TodoTableViewModel {
     
     //MARK:- BehaviorSubject
     let pressedCellOb : PublishSubject<Int> = PublishSubject()
-    let cellDataOb : BehaviorRelay<[TodoData]> = BehaviorRelay(value: [])
+    let cellDataForTableViewOb : BehaviorRelay<[TodoData]> = BehaviorRelay(value: [])
     
+    let cellDataForNextViewOb : PublishSubject<TodoData> = PublishSubject()
 
     init() {
         Observable.of(model.todoDataArray)
-            .bind(to: cellDataOb)
+            .bind(to: cellDataForTableViewOb)
             .disposed(by: bag)
         
+        pressedCellOb
+            .map(getCellData)
+            .bind(to: cellDataForNextViewOb)
+            .disposed(by: bag)
     }
     
     deinit {
-        
+        bag = DisposeBag()
     }
     
     func dateFormatting(from: Date) -> String{
         return self.dateFormmater.string(from: from)
     }
     
-    func getCellData(from index: Int)-> TodoData{
+    func getCellData(_ index: Int)-> TodoData{
         return model.todoDataArray[index]
     }
     

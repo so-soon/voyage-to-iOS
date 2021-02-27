@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="2017.3913043478262" y="110.49107142857143"/>
         </scene>
-        <!--View Controller-->
+        <!--Todo Detail View Controller-->
         <scene sceneID="ReC-9D-7wB">
             <objects>
-                <viewController id="Obq-iZ-mMo" sceneMemberID="viewController">
+                <viewController id="Obq-iZ-mMo" customClass="TodoDetailViewController" customModule="RxTodos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zSg-s2-Q7g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,6 +135,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nh4-sr-hnY"/>
+                    <connections>
+                        <outlet property="alarmSwitch" destination="CsN-fS-ynn" id="fCh-ye-omO"/>
+                        <outlet property="datePicker" destination="oNV-N4-tEt" id="wp0-bM-O3A"/>
+                        <outlet property="descTextView" destination="d6K-by-5Wa" id="CBm-Wg-hHf"/>
+                        <outlet property="titleLabel" destination="QuA-xb-0no" id="H2q-oL-OWB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTi-uX-Rve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
