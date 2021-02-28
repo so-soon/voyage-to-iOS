@@ -46,7 +46,7 @@
                                         <connections>
                                             <outlet property="date" destination="JxX-LB-DFl" id="Twb-Jl-J8s"/>
                                             <outlet property="title" destination="Xf1-ho-O3e" id="I8a-6Z-kmJ"/>
-                                            <segue destination="Lua-4O-oFE" kind="presentation" id="El4-j2-vop"/>
+                                            <segue destination="vd4-8N-PeR" kind="presentation" id="Lyy-5l-U8f"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -64,7 +64,7 @@
                     <navigationItem key="navigationItem" title="Todos" id="q8K-18-Fzr">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="Y81-U1-6f5">
                             <connections>
-                                <segue destination="vd4-8N-PeR" kind="show" id="ulq-ku-84T"/>
+                                <segue destination="vd4-8N-PeR" kind="show" id="Rl7-G1-6RH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -81,16 +81,16 @@
             <objects>
                 <viewController id="vd4-8N-PeR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mRe-Ul-zp0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXO-AM-TLF">
-                                <rect key="frame" x="61" y="102" width="292" height="34"/>
+                                <rect key="frame" x="61" y="14" width="292" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6ne-0X-YD9">
-                                <rect key="frame" x="0.0" y="144" width="414" height="311"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="311"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6ne-0X-YD9" secondAttribute="height" multiplier="414:311" id="cZq-8z-3AO"/>
@@ -100,7 +100,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-wh-Bpu">
-                                <rect key="frame" x="153.66666666666666" y="463" width="106.66666666666666" height="31"/>
+                                <rect key="frame" x="153.66666666666666" y="375" width="106.66666666666666" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rF0-64-Aln">
                                         <rect key="frame" x="0.0" y="0.0" width="57.666666666666664" height="31"/>
@@ -114,7 +114,7 @@
                                 </subviews>
                             </stackView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ttq-AW-mW6">
-                                <rect key="frame" x="47" y="502" width="320" height="216"/>
+                                <rect key="frame" x="47" y="414" width="320" height="216"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B0P-gs-KqD"/>
@@ -139,22 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mi1-N9-lz2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="833"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="SY3-Zr-NjW">
-            <objects>
-                <viewController id="Lua-4O-oFE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aCi-d1-7Rn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Qla-PV-Hec"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X1N-ce-HxF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1681" y="832"/>
+            <point key="canvasLocation" x="1851" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rqR-xY-g6e">
@@ -175,6 +160,9 @@
             <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Lyy-5l-U8f"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
