@@ -23,50 +23,67 @@ class TodoTableViewController: UIViewController {
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        reactiveBindUI()
 
         // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        bag = DisposeBag()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
-        reactiveBindUI()
-        
         todoTableView.reloadSections(IndexSet(integer: 0), with: UITableView.RowAnimation.automatic)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? TodoDetailViewController else {return}
+        let identifier = segue.identifier ?? ""
         
-        viewModel.cellDataForNextViewOb
-            .debug("Rx - cellDataForNextViewOb")
-            .bind(to: detailVC.viewModel.cellDataFromTableView)
-            .disposed(by: bag)
+        if identifier == TodoDetailViewController.identifier,
+           let todoData = sender as? TodoData,
+           let dest = segue.destination as? TodoDetailViewController{
+            let detailViewModel = TodoDetailViewModel(todoData)
+            dest.viewModel = detailViewModel
+        }
     }
     
     private func reactiveBindUI(){
+        
+        // [INPUT]
+        
         todoTableView.rx.itemSelected
             .debug("Rx - itemSelected")
-            .map({[weak self] in
-                self?.todoTableView.deselectRow(at: $0, animated: true)
-                return $0.row
-            })
+            .map({$0.row})
             .bind(to: viewModel.pressedCellIndexOb)
             .disposed(by: bag)
+        
+        addButton.rx.tap
+            .debug("Rx - addBUtton")
+            .map({TodoData.mockData})
+            .bind(to: viewModel.showDetailViewOb)
+            .disposed(by: bag)
+        
+        // [NAVIGATION]
+        
+        viewModel.showDetailViewOb
+            .debug("Rx - ShowDetail")
+            .subscribe(onNext:{
+                [weak self] data in
+                self?.performSegue(withIdentifier: TodoDetailViewController.identifier, sender: data)
+            }).disposed(by: bag)
+        
+        // [OUTPUT]
         
         viewModel.cellDataForTableViewOb
             .bind(to: todoTableView.rx.items(cellIdentifier: "TodoCell")){
                 (index, model, cell) in
                 cell.textLabel?.text = model.title
                 cell.detailTextLabel?.text = model.desc
-                
             }.disposed(by: bag)
         
     }
     
-
 }

@@ -12,7 +12,7 @@
         <!--RxTodo-->
         <scene sceneID="GHS-7E-AO4">
             <objects>
-                <viewController id="I5j-ey-IPu" customClass="TodoTableViewController" customModule="RxTodos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TodoTableViewController" id="I5j-ey-IPu" customClass="TodoTableViewController" customModule="RxTodos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6U-j9-O3f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" textLabel="KTf-SM-aRN" detailTextLabel="eJ8-5S-MQu" style="IBUITableViewCellStyleSubtitle" id="Jhl-bY-z0A">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" editingAccessoryType="detailDisclosureButton" textLabel="KTf-SM-aRN" detailTextLabel="eJ8-5S-MQu" style="IBUITableViewCellStyleSubtitle" id="Jhl-bY-z0A">
                                         <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jhl-bY-z0A" id="4ia-sj-TJt">
@@ -44,9 +44,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Obq-iZ-mMo" kind="presentation" id="nFM-eQ-2bf"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -61,22 +58,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="RxTodo" id="3bL-OB-MBV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ITb-UP-c0X">
-                            <connections>
-                                <segue destination="Obq-iZ-mMo" kind="show" id="rOy-6h-iNA"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="oJC-nt-AYf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ITb-UP-c0X"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="ITb-UP-c0X" id="2Td-tx-czQ"/>
                         <outlet property="todoTableView" destination="UVN-mY-DHb" id="wPP-6u-mq9"/>
+                        <segue destination="Obq-iZ-mMo" kind="show" identifier="TodoDetailViewController" id="Fjv-0H-ax5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lM-iF-edT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2017.3913043478262" y="110.49107142857143"/>
         </scene>
-        <!--Todo Detail View Controller-->
+        <!--Todos-->
         <scene sceneID="ReC-9D-7wB">
             <objects>
                 <viewController id="Obq-iZ-mMo" customClass="TodoDetailViewController" customModule="RxTodos" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,17 +129,26 @@
                             <constraint firstItem="gxx-HO-lbH" firstAttribute="trailing" secondItem="GUW-sX-z8B" secondAttribute="trailing" constant="16" id="sMc-XO-gKE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nh4-sr-hnY"/>
+                    <navigationItem key="navigationItem" title="Todos" id="q1b-Dz-dBe">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Edit" id="c77-px-7Es"/>
+                            <barButtonItem title="View" id="YfI-DY-TZu"/>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="uKO-dG-Vh9"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="alarmSwitch" destination="CsN-fS-ynn" id="fCh-ye-omO"/>
                         <outlet property="datePicker" destination="oNV-N4-tEt" id="wp0-bM-O3A"/>
                         <outlet property="descTextView" destination="d6K-by-5Wa" id="CBm-Wg-hHf"/>
+                        <outlet property="doneButton" destination="uKO-dG-Vh9" id="dgg-Ug-iOj"/>
+                        <outlet property="editButton" destination="c77-px-7Es" id="dft-ig-ZR2"/>
                         <outlet property="titleLabel" destination="QuA-xb-0no" id="H2q-oL-OWB"/>
+                        <outlet property="viewButton" destination="YfI-DY-TZu" id="FcY-bT-hRt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTi-uX-Rve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2900" y="99.776785714285708"/>
+            <point key="canvasLocation" x="3045" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oAZ-VR-Fxe">
@@ -165,9 +169,6 @@
             <point key="canvasLocation" x="1107.2463768115942" y="110.49107142857143"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="rOy-6h-iNA"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
