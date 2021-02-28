@@ -11,5 +11,6 @@ class TableCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var date: UILabel!
+    var item: TodoItem!
 }
 

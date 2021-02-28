@@ -18,7 +18,14 @@ class ViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ViewItemSegue" {
+            let detailViewController = segue.destination as! DetailViewController
+            let senderCell = sender as! TableCell
+            detailViewController.todoPassed = senderCell.item
+        }
+    }
 
 }
 
@@ -32,6 +39,12 @@ extension ViewController :UITableViewDelegate, UITableViewDataSource {
         
         cell.title.text = TodoModel.shared.todoItems[indexPath.row].title_text
         cell.date.text = TodoModel.shared.todoItems[indexPath.row].date
+        cell.item = TodoModel.shared.todoItems[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier:"ViewItemSegue", sender:cell)
     }
 }

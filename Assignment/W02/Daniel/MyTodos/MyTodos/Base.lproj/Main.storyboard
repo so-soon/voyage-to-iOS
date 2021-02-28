@@ -46,7 +46,7 @@
                                         <connections>
                                             <outlet property="date" destination="JxX-LB-DFl" id="Twb-Jl-J8s"/>
                                             <outlet property="title" destination="Xf1-ho-O3e" id="I8a-6Z-kmJ"/>
-                                            <segue destination="vd4-8N-PeR" kind="presentation" id="Lyy-5l-U8f"/>
+                                            <segue destination="vd4-8N-PeR" kind="presentation" identifier="ViewItemSegue" id="Lyy-5l-U8f"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -134,8 +134,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="FrO-Yg-8bp">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="mtc-Mw-8me"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="mtc-Mw-8me">
+                            <connections>
+                                <action selector="saveBtnClicked:" destination="vd4-8N-PeR" id="fbJ-TU-juy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="alarmSwitch" destination="WNB-hp-FCG" id="Tpu-PG-Evn"/>
+                        <outlet property="datePicker" destination="ttq-AW-mW6" id="Whh-OT-ltz"/>
+                        <outlet property="textView" destination="6ne-0X-YD9" id="bdq-dQ-khc"/>
+                        <outlet property="titleField" destination="pXO-AM-TLF" id="HHG-rJ-7Eb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mi1-N9-lz2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
