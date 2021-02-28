@@ -16,32 +16,22 @@ class TodoDetailViewModel {
     //MARK:- Observable
     let dataUpdateOb : PublishSubject<TodoData> = PublishSubject()
     
-    let titleTextOb : BehaviorRelay<String> = BehaviorRelay(value: "")
-    let descTextOb : BehaviorRelay<String> = BehaviorRelay(value: "")
-    let datePickerDateOb : BehaviorRelay<Date> = BehaviorRelay(value:Date())
-    let shouldNotifyOb : BehaviorRelay<Bool> = BehaviorRelay(value: true)
+    let titleTextOb : Observable<String>
+    let descTextOb : Observable<String>
+    let datePickerDateOb : Observable<Date>
+    let shouldNotifyOb : Observable<Bool>
+    
     
     init(_ todoData: TodoData = TodoData.mockData) {
-        let data = Observable.just(todoData).debug("data flow")
+        let data = Observable.just(todoData)
         
-        data.map({$0.title})
-            .debug("title")
-            .bind(to: titleTextOb)
-            .disposed(by: bag)
+        titleTextOb = data.map({$0.title})
         
-        data.map({$0.desc})
-            .debug("desc")
-            .bind(to: descTextOb)
-            .disposed(by: bag)
+        descTextOb = data.map({$0.desc})
         
-        data.map({$0.date})
-            .debug("date")
-            .bind(to: datePickerDateOb)
-            .disposed(by: bag)
+        datePickerDateOb = data.map({$0.date})
         
-        data.map({$0.shouldNotify})
-            .debug("noti")
-            .bind(to: shouldNotifyOb)
-            .disposed(by: bag)
+        shouldNotifyOb = data.map({$0.shouldNotify})
+        
     }
 }

@@ -17,22 +17,15 @@ class TodoTableViewController: UIViewController {
     
     //MARK:- Properties
     let viewModel : TodoTableViewModel = TodoTableViewModel()
-    
     var bag = DisposeBag()
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         reactiveBindUI()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
