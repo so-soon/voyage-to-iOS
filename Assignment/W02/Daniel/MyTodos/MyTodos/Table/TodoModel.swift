@@ -24,10 +24,13 @@ class TodoModel {
     }
     
     func addTodo(_ todoItem: TodoItem) throws {
-        if isItemExists(for: todoItem) {
-            throw TodoModelError.idExistsFor(id: todoItem.id)
+        for i in 0..<todoItems.count {
+            print(i)
+            if todoItems[i].id == todoItem.id {
+                todoItems[i] = todoItem
+                return
+            }
         }
-        
         todoItems.append(todoItem)
     }
     
@@ -36,7 +39,7 @@ class TodoModel {
             throw TodoModelError.idNotExistsFor(id: todoItem.id)
         }
         
-        for i in 0...todoItems.count {
+        for i in 0..<todoItems.count {
             if todoItems[i].id == todoItem.id {
                 todoItems.remove(at: i)
                 break

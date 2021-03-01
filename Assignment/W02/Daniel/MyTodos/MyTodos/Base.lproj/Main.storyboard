@@ -111,8 +111,15 @@
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ttq-AW-mW6">
                                 <rect key="frame" x="47" y="502" width="320" height="216"/>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnT-mt-tba">
+                                <rect key="frame" x="376" y="108" width="17.333333333333314" height="22"/>
+                                <state key="normal" image="pencil" catalog="system"/>
+                                <connections>
+                                    <segue destination="aYY-K3-C5a" kind="unwind" identifier="EditRewind" unwindAction="rewindHereWithSender:" id="tFL-EF-vIT"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXO-AM-TLF">
-                                <rect key="frame" x="20" y="102" width="374" height="34"/>
+                                <rect key="frame" x="58" y="102" width="298" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -122,28 +129,31 @@
                         <constraints>
                             <constraint firstItem="6ne-0X-YD9" firstAttribute="top" secondItem="pXO-AM-TLF" secondAttribute="bottom" constant="8" id="4WD-f3-B73"/>
                             <constraint firstItem="pXO-AM-TLF" firstAttribute="centerX" secondItem="mRe-Ul-zp0" secondAttribute="centerX" id="Dh7-pp-AXZ"/>
+                            <constraint firstItem="nnT-mt-tba" firstAttribute="leading" secondItem="pXO-AM-TLF" secondAttribute="trailing" constant="20" id="NBo-Cd-aH4"/>
                             <constraint firstItem="Efe-wh-Bpu" firstAttribute="centerX" secondItem="mRe-Ul-zp0" secondAttribute="centerX" id="PLH-gL-WGx"/>
+                            <constraint firstItem="nnT-mt-tba" firstAttribute="top" secondItem="B0P-gs-KqD" secondAttribute="top" constant="20" id="Pug-A2-ndx"/>
                             <constraint firstItem="Efe-wh-Bpu" firstAttribute="top" secondItem="6ne-0X-YD9" secondAttribute="bottom" constant="8" id="TLz-G1-1c9"/>
                             <constraint firstItem="6ne-0X-YD9" firstAttribute="leading" secondItem="B0P-gs-KqD" secondAttribute="leading" id="UWL-5f-Jty"/>
                             <constraint firstItem="pXO-AM-TLF" firstAttribute="top" secondItem="B0P-gs-KqD" secondAttribute="top" constant="14" id="e6p-y2-w1f"/>
                             <constraint firstItem="ttq-AW-mW6" firstAttribute="top" secondItem="Efe-wh-Bpu" secondAttribute="bottom" constant="8" id="gaG-e2-tad"/>
                             <constraint firstItem="ttq-AW-mW6" firstAttribute="centerX" secondItem="mRe-Ul-zp0" secondAttribute="centerX" id="khM-oJ-CxK"/>
-                            <constraint firstItem="pXO-AM-TLF" firstAttribute="leading" secondItem="B0P-gs-KqD" secondAttribute="leading" constant="20" id="mTk-gw-Llu"/>
                             <constraint firstItem="6ne-0X-YD9" firstAttribute="trailing" secondItem="B0P-gs-KqD" secondAttribute="trailing" id="rg7-QJ-EVn"/>
-                            <constraint firstItem="B0P-gs-KqD" firstAttribute="trailing" secondItem="pXO-AM-TLF" secondAttribute="trailing" constant="20" id="ykL-jZ-cLz"/>
+                            <constraint firstItem="B0P-gs-KqD" firstAttribute="trailing" secondItem="nnT-mt-tba" secondAttribute="trailing" constant="20.670000000000002" id="tqV-cW-Sq4"/>
+                            <constraint firstItem="pXO-AM-TLF" firstAttribute="leading" secondItem="B0P-gs-KqD" secondAttribute="leading" constant="58" id="yNJ-8y-XUw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="FrO-Yg-8bp">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="mtc-Mw-8me">
                             <connections>
                                 <action selector="saveBtnClicked:" destination="vd4-8N-PeR" id="fbJ-TU-juy"/>
-                                <segue destination="aYY-K3-C5a" kind="unwind" unwindAction="rewindHereWithSender:" id="XDb-F0-haS"/>
+                                <segue destination="aYY-K3-C5a" kind="unwind" identifier="SaveRewind" unwindAction="rewindHereWithSender:" id="XDb-F0-haS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="alarmSwitch" destination="WNB-hp-FCG" id="Tpu-PG-Evn"/>
                         <outlet property="datePicker" destination="ttq-AW-mW6" id="Whh-OT-ltz"/>
+                        <outlet property="editBtn" destination="nnT-mt-tba" id="VKD-1F-KgG"/>
                         <outlet property="textView" destination="6ne-0X-YD9" id="bdq-dQ-khc"/>
                         <outlet property="titleField" destination="pXO-AM-TLF" id="HHG-rJ-7Eb"/>
                     </connections>
@@ -176,6 +186,7 @@
         <segue reference="Rl7-G1-6RH"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

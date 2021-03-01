@@ -24,25 +24,45 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ViewItemSegue" {
             let detailViewController = segue.destination as! DetailViewController
-            let senderCell = sender as! TableCell
-            detailViewController.todoPassed = senderCell.item
+            
+            if let senderCell = sender as? TableCell {
+                detailViewController.todoPassed = senderCell.item
+            }
             detailViewController.editMode = false
+        }
+        if segue.identifier == "ViewItemAddSegue" {
+            let detailViewController = segue.destination as! DetailViewController
+            
+            if let senderVC = sender as? ViewController {
+                detailViewController.todoPassed = senderVC.todoReceived
+            }
+            
+            detailViewController.editMode = true
         }
     }
     
     @IBAction func rewindHere(sender: UIStoryboardSegue) {
-        if let vc = sender.source as? DetailViewController {
-            let todo = TodoItem(id:UUID().uuidString,
-                                title_text:vc.titleField.text!,
-                                memo:vc.textView.text,
-                                isNotify:vc.alarmSwitch.isOn,
-                                date:TodoModel.shared.dateFormatter.string(from:vc.datePicker.date))
+        guard let vc = sender.source as? DetailViewController else {
+            return
+        }
+        
+        if sender.identifier == "SaveRewind" {
+            guard let todo = vc.todoPassed else {
+                return
+            }
             do {
                 try TodoModel.shared.addTodo(todo)
             } catch {
                 print("Add Todo Failed")
             }
             tableview.reloadData()
+        }
+        
+        else if sender.identifier == "EditRewind" {
+            DispatchQueue.main.async {
+                self.todoReceived = vc.todoPassed
+                self.performSegue(withIdentifier:"ViewItemAddSegue", sender:self)
+            }
         }
     }
 
