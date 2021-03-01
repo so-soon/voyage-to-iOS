@@ -10,6 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var todoPassed: TodoItem?
+    var editMode = true
     
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var textView: UITextView!
@@ -25,11 +26,18 @@ class DetailViewController: UIViewController {
         textView.text = todo.memo
         alarmSwitch.setOn(todo.isNotify, animated: true)
         datePicker.date = TodoModel.shared.dateFormatter.date(from: todo.date)!
+        if editMode == true {
+            setUserInteraction(true)
+        } else {
+            setUserInteraction(false)
+        }
         // Do any additional setup after loading the view.
     }
-
-
-    @IBAction func saveBtnClicked(_ sender: Any) {
-        
+    
+    func setUserInteraction(_ flag: Bool) {
+        self.titleField.isUserInteractionEnabled = flag
+        self.textView.isUserInteractionEnabled = flag
+        self.alarmSwitch.isUserInteractionEnabled = flag
+        self.datePicker.isUserInteractionEnabled = flag
     }
 }

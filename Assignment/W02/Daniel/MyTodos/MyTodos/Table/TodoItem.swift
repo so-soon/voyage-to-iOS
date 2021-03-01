@@ -8,9 +8,9 @@
 import Foundation
 
 struct TodoItem : Codable {
-    var id:String
-    var title_text:String
-    var memo:String
-    var isNotify:Bool
-    var date:String
+    var id:String = ""
+    var title_text:String = ""
+    var memo:String = ""
+    var isNotify:Bool = false
+    var date:String = ""
 }

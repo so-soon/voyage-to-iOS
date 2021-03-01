@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
     
+    var todoReceived: TodoItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +26,23 @@ class ViewController: UIViewController {
             let detailViewController = segue.destination as! DetailViewController
             let senderCell = sender as! TableCell
             detailViewController.todoPassed = senderCell.item
+            detailViewController.editMode = false
+        }
+    }
+    
+    @IBAction func rewindHere(sender: UIStoryboardSegue) {
+        if let vc = sender.source as? DetailViewController {
+            let todo = TodoItem(id:UUID().uuidString,
+                                title_text:vc.titleField.text!,
+                                memo:vc.textView.text,
+                                isNotify:vc.alarmSwitch.isOn,
+                                date:TodoModel.shared.dateFormatter.string(from:vc.datePicker.date))
+            do {
+                try TodoModel.shared.addTodo(todo)
+            } catch {
+                print("Add Todo Failed")
+            }
+            tableview.reloadData()
         }
     }
 
