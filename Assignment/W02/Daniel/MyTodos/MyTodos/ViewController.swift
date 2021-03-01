@@ -99,6 +99,15 @@ extension ViewController :UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier:"ViewItemSegue", sender:cell)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete) {
+            let cell = tableView.cellForRow(at: indexPath) as! TableCell
+            try? TodoModel.shared.removeTodo(for:cell.item)
+            tableView.deleteRows(at:[indexPath], with:.fade)
+        }
     }
 }

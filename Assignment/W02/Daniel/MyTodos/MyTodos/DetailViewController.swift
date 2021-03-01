@@ -20,6 +20,13 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if editMode == true {
+            setUserInteraction(true)
+        } else {
+            setUserInteraction(false)
+        }
+        
         guard let todo = todoPassed else {
             todoPassed = TodoItem(id:UUID().uuidString,
                                   title_text:"",
@@ -33,12 +40,6 @@ class DetailViewController: UIViewController {
         textView.text = todo.memo
         alarmSwitch.setOn(todo.isNotify, animated: true)
         datePicker.date = TodoModel.shared.dateFormatter.date(from: todo.date)!
-        if editMode == true {
-            setUserInteraction(true)
-        } else {
-            setUserInteraction(false)
-        }
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

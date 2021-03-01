@@ -45,6 +45,8 @@ class TodoModel {
         
         for i in 0..<todoItems.count {
             if todoItems[i].id == todoItem.id {
+                delete(todoItems[i].id)
+                deleteNoti(for:todoItems[i])
                 todoItems.remove(at: i)
                 break
             }
@@ -82,32 +84,36 @@ class TodoModel {
         print("ADD NOTI SUCCESSFUL")
     }
     
-    func removeNoti(for todoItem: TodoItem) {
-        
+    func deleteNoti(for todoItem: TodoItem) {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.getPendingNotificationRequests { (notificationRequests) in
+            var identifiers: [String] = []
+            for notification:UNNotificationRequest in notificationRequests {
+                if notification.identifier == todoItem.id {
+                   identifiers.append(notification.identifier)
+                }
+            }
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
+        }
     }
     
     func saveToJSON() {
-        
+        for todo in todoItems {
+            save(todo, with:todo.id)
+            print("save: " + todo.title_text)
+        }
     }
     
     func loadFromJSON() {
-        todoItems.append(TodoItem(id: UUID().uuidString,
-                                  title_text:"Memo1",
-                                  memo:"TestMemo",
-                                  isNotify: false,
-                                  date: dateFormatter.string(from: Date())))
-        todoItems.append(TodoItem(id: UUID().uuidString,
-                                  title_text:"Memo2",
-                                  memo:"Wow!",
-                                  isNotify: false,
-                                  date: dateFormatter.string(from: Date())))
-        todoItems.append(TodoItem(id: UUID().uuidString,
-                                  title_text:"Memo3",
-                                  memo:"HaHa",
-                                  isNotify: true,
-                                  date: dateFormatter.string(from: Date())))
-        
-    
+        todoItems.removeAll()
+        do {
+            let files = try FileManager.default.contentsOfDirectory(atPath: getDocumentDirectory().path)
+            for fileName in files {
+                todoItems.append(load(fileName))
+            }
+        } catch {
+            fatalError("Could not load any files")
+        }
     }
     
     private func isItemExists(for todoItem: TodoItem) -> Bool {
@@ -117,5 +123,57 @@ class TodoModel {
             }
         }
         return false
+    }
+    
+    private func save(_ object:TodoItem, with fileName:String) {
+        let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory:false)
+        let encoder = JSONEncoder()
+        
+        do {
+            let data = try encoder.encode(object)
+            if FileManager.default.fileExists(atPath: url.path) {
+                try FileManager.default.removeItem(at: url)
+            }
+            FileManager.default.createFile(atPath: url.path, contents:data, attributes: nil)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    private func load(_ fileName:String) -> TodoItem {
+        let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory:false)
+        if !FileManager.default.fileExists(atPath: url.path) {
+            fatalError("File not found at path \(url.path)")
+        }
+        
+        if let data = FileManager.default.contents(atPath: url.path) {
+            do {
+                let model = try JSONDecoder().decode(TodoItem.self, from:data)
+                return model
+            } catch {
+                fatalError(error.localizedDescription)
+            }
+        } else {
+            fatalError("Data unavailable at path \(url.path)")
+        }
+    }
+    
+    private func delete(_ fileName:String) {
+        let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory:false)
+        
+        if FileManager.default.fileExists(atPath: url.path) {
+            do {
+                try FileManager.default.removeItem(at: url)
+            }catch {
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func getDocumentDirectory() -> URL {
+        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access document Directory")
+        }
+        return url
     }
 }
