@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
 
@@ -15,6 +16,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) {
+            (granted, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    if granted {
+                        print("Granted")
+                    } else {
+                        print("Not Granted")
+                    }
+                }
+        }
         
         TodoModel.shared.loadFromJSON()
         tableview.dataSource = self

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 enum TodoModelError: Error {
     case idExistsFor(id: String)
@@ -32,6 +33,9 @@ class TodoModel {
             }
         }
         todoItems.append(todoItem)
+        if todoItem.isNotify {
+            addNoti(for: todoItem)
+        }
     }
     
     func removeTodo(for todoItem: TodoItem) throws {
@@ -48,7 +52,34 @@ class TodoModel {
     }
     
     func addNoti(for todoItem: TodoItem) {
-        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if let error = error {
+                print(error)
+            } else {
+                if granted {
+                    let content = UNMutableNotificationContent()
+                    content.title = todoItem.title_text
+                    content.subtitle = todoItem.date
+                    content.body = todoItem.memo
+                    content.badge = 1
+                    guard let date = TodoModel.shared.dateFormatter.date(from:todoItem.date) else {
+                        print("FAILED")
+                        return
+                    }
+                    let comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+                    let trigger = UNCalendarNotificationTrigger(dateMatching:comps, repeats:false)
+                    let request = UNNotificationRequest(identifier: todoItem.id, content: content, trigger: trigger)
+                    notificationCenter.add(request, withCompletionHandler: nil)
+                } else {
+                    print("Not Granted")
+                    
+                }
+                
+            }
+            
+        }
+        print("ADD NOTI SUCCESSFUL")
     }
     
     func removeNoti(for todoItem: TodoItem) {
