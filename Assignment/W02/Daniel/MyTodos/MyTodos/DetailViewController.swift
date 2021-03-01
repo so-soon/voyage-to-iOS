@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
         
         if editMode == true {
             setUserInteraction(true)
+            titleField.becomeFirstResponder()
         } else {
             setUserInteraction(false)
         }
