@@ -8,7 +8,7 @@
     - login 버튼을 누를 경우 Activity Indicator가 돌아가면서 아래 url의 이미지를 다운로드하여 login버튼 아래에 이미지뷰로 보여줌
     - url : "https://picsum.photos/1280/720/?random"
 
-  > Hint : GCD,Async
+  > Hint : GCD,Async<br>
   > 목표는 이미지 로딩중일때 숫자가 멈추지 않는것입니당
 
 
