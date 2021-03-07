@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var pwField: UITextField!
     @IBOutlet weak var idPassImage: UIImageView!
     @IBOutlet weak var pwPassImage: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,22 @@ class ViewController: UIViewController {
         else {
             pwPassImage.image = UIImage(systemName: "checkmark.circle")
             self.pwPass = false
+        }
+    }
+    
+    @IBAction func loginPressed(_ sender: Any) {
+        if self.idPass && self.pwPass {
+            let url = URL(string: "https://picsum.photos/1280/720/?random")
+            DispatchQueue.global().async {
+                DispatchQueue.main.async {
+                    self.indicator.startAnimating()
+                }
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.imageView.image = UIImage(data: data!)
+                }
+            }
         }
     }
 }

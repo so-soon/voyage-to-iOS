@@ -64,6 +64,9 @@
                                     <constraint firstAttribute="width" constant="129" id="lQE-GX-s6p"/>
                                 </constraints>
                                 <state key="normal" title="LOGIN"/>
+                                <connections>
+                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OVG-Ns-7LA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tC6-rC-iCE">
                                 <rect key="frame" x="186" y="407" width="42" height="21"/>
@@ -116,6 +119,8 @@
                     <connections>
                         <outlet property="idField" destination="la5-qK-jQ9" id="rUw-6t-kwV"/>
                         <outlet property="idPassImage" destination="uoF-uQ-BL6" id="cLi-O3-mbL"/>
+                        <outlet property="imageView" destination="qHV-lu-cLC" id="R4C-Ay-SLH"/>
+                        <outlet property="indicator" destination="DYJ-7O-5h0" id="QsF-iG-Xea"/>
                         <outlet property="pwField" destination="1St-Au-q5F" id="nkM-ur-ebT"/>
                         <outlet property="pwPassImage" destination="0fS-wS-ebd" id="jQM-lV-oF5"/>
                         <outlet property="timerLabel" destination="tC6-rC-iCE" id="IYX-SZ-l8z"/>
