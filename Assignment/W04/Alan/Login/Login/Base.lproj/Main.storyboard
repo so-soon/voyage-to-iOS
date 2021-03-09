@@ -40,12 +40,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="tfId:" destination="BYZ-38-t0r" eventType="editingChanged" id="p4Q-F6-0uv"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-SH-UVk">
                                 <rect key="frame" x="112" y="264" width="191" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="tfPassword:" destination="BYZ-38-t0r" eventType="editingChanged" id="obG-d9-WCI"/>
+                                </connections>
                             </textField>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="chS-zW-ZfX">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
@@ -56,9 +62,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="LabelCount" destination="1E0-F1-b76" id="EtP-BC-VdI"/>
                         <outlet property="activityIndicator" destination="chS-zW-ZfX" id="jmd-bs-PLA"/>
                         <outlet property="downloadImage" destination="Jpy-AO-Dv9" id="IgZ-BM-dG6"/>
+                        <outlet property="labelCount" destination="1E0-F1-b76" id="nmx-Ob-lsB"/>
+                        <outlet property="loginButton" destination="Vdf-nP-Xsp" id="c3U-TF-EGk"/>
+                        <outlet property="tfId" destination="g2O-bG-vH2" id="8k8-l5-HYb"/>
+                        <outlet property="tfPassword" destination="E0Y-SH-UVk" id="XVt-Ky-mI8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
