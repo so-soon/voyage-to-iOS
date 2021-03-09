@@ -14,42 +14,40 @@ class ViewModel {
     
     let bag = DisposeBag()
     
-    let emailTextObservable : PublishSubject<String> = PublishSubject()
-    let pwTextObservable : PublishSubject<String> = PublishSubject()
-    let downloadImgObservable : PublishSubject<Void> = PublishSubject()
+    // [INPUT]
+    let emailText : PublishSubject<String> = PublishSubject()
+    let pwText : PublishSubject<String> = PublishSubject()
+    let loginPressed : PublishSubject<Void> = PublishSubject()
     
-    
-    
-    let isEmailValidObservable : BehaviorSubject<Bool> = BehaviorSubject(value: false)
-    let isPwValidObservable : BehaviorSubject<Bool> = BehaviorSubject(value: false)
-    let downloadedImgObservable : PublishSubject<UIImage> = PublishSubject()
+    // [OUTPUT]
+    let isEmailValid : BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    let isPwValid : BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    let downloadImg : PublishSubject<UIImage> = PublishSubject()
     
     
     init() {
-        emailTextObservable
+        emailText
             .map({
                 text in
-                
                 return text.contains("@") && text.contains(".")
             })
-            .bind(to: isEmailValidObservable)
+            .bind(to: isEmailValid)
             .disposed(by: bag)
         
-        pwTextObservable
+        pwText
             .map({
                 text in
-                
                 return text.count > 5
             })
-            .bind(to: isPwValidObservable)
+            .bind(to: isPwValid)
             .disposed(by: bag)
         
-        downloadImgObservable
+        loginPressed
             .observe(on: ConcurrentDispatchQueueScheduler.init(qos: .default))
             .compactMap({[weak self] in return URL(string: self?.url ?? "")})
             .map({ try Data(contentsOf: $0) })
             .compactMap({ UIImage(data: $0) })
-            .bind(to: downloadedImgObservable)
+            .bind(to: downloadImg)
             .disposed(by: bag)
         
         

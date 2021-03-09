@@ -42,48 +42,38 @@ class ViewController: UIViewController {
         
         // [INPUT]
         self.TFemail.rx.text.orEmpty
-            .bind(to: viewModel.emailTextObservable)
+            .bind(to: viewModel.emailText)
             .disposed(by: bag)
         
         self.TFpw.rx.text.orEmpty
-            .bind(to: viewModel.pwTextObservable)
+            .bind(to: viewModel.pwText)
             .disposed(by: bag)
         
         self.btnLogin.rx.tap
-            .bind(to: viewModel.downloadImgObservable)
+            .bind(to: viewModel.loginPressed)
             .disposed(by: bag)
         
         // [OUTPUT]
         
-        viewModel.isEmailValidObservable
+        viewModel.isEmailValid
             .distinctUntilChanged()
-            .subscribe(onNext:{
-                [weak self] isEmailValid in
-                
-                self?.imgEmailValid.isHidden = !isEmailValid
-            })
+            .map{!$0}
+            .bind(to: imgEmailValid.rx.isHidden)
             .disposed(by: bag)
         
-        viewModel.isPwValidObservable
+        viewModel.isPwValid
             .distinctUntilChanged()
-            .subscribe(onNext:{
-                [weak self] isPWValid in
-                
-                self?.imgPWValid.isHidden = !isPWValid
-            })
+            .map{!$0}
+            .bind(to: imgPWValid.rx.isHidden)
             .disposed(by: bag)
         
         
-        Observable.combineLatest(viewModel.isEmailValidObservable, viewModel.isPwValidObservable)
+        Observable.combineLatest(viewModel.isEmailValid, viewModel.isPwValid)
             .map({$0 && $1})
-            .subscribe(onNext: {
-                [weak self] isValid in
-                self?.btnLogin.isEnabled = isValid
-            })
+            .bind(to: btnLogin.rx.isEnabled)
             .disposed(by: bag)
         
-        viewModel
-            .downloadedImgObservable
+        viewModel.downloadImg
             .bind(to: imgPic.rx.image)
             .disposed(by: bag)
     }
