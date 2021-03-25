@@ -19,6 +19,8 @@
 
 - RxSwift계열을 사용해서 구현해보기!
 
+- JSON File url : https://firebasestorage.googleapis.com/v0/b/rxswiftin4hours.appspot.com/o/fried_menus.json?alt=media&token=42d5cb7e-8ec4-48f9-bf39-3049e796c936
+
 
 > Hint : TableView,Alamofire(URLSession으로도 가능), PerformSegue
 
