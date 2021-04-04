@@ -17,6 +17,7 @@
 		E307E38D2619928100DDDAAA /* OrderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307E38C2619928100DDDAAA /* OrderTableCell.swift */; };
 		E307E3902619946700DDDAAA /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307E38F2619946700DDDAAA /* ViewModel.swift */; };
 		E307E3932619956C00DDDAAA /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307E3922619956C00DDDAAA /* ReceiptViewController.swift */; };
+		E307E3962619980900DDDAAA /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E307E3952619980900DDDAAA /* OrderItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		E307E38C2619928100DDDAAA /* OrderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableCell.swift; sourceTree = "<group>"; };
 		E307E38F2619946700DDDAAA /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		E307E3922619956C00DDDAAA /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
+		E307E3952619980900DDDAAA /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		E68A7F9777C0225E52574DBE /* Pods-RxOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxOrder.release.xcconfig"; path = "Target Support Files/Pods-RxOrder/Pods-RxOrder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				E307E36926198A1D00DDDAAA /* ViewController.swift */,
 				E307E3922619956C00DDDAAA /* ReceiptViewController.swift */,
 				E307E38C2619928100DDDAAA /* OrderTableCell.swift */,
+				E307E3952619980900DDDAAA /* OrderItem.swift */,
 				E307E36B26198A1D00DDDAAA /* Main.storyboard */,
 				E307E38F2619946700DDDAAA /* ViewModel.swift */,
 				E307E36E26198A1E00DDDAAA /* Assets.xcassets */,
@@ -216,6 +219,7 @@
 			files = (
 				E307E3902619946700DDDAAA /* ViewModel.swift in Sources */,
 				E307E36A26198A1D00DDDAAA /* ViewController.swift in Sources */,
+				E307E3962619980900DDDAAA /* OrderItem.swift in Sources */,
 				E307E36626198A1D00DDDAAA /* AppDelegate.swift in Sources */,
 				E307E3932619956C00DDDAAA /* ReceiptViewController.swift in Sources */,
 				E307E36826198A1D00DDDAAA /* SceneDelegate.swift in Sources */,

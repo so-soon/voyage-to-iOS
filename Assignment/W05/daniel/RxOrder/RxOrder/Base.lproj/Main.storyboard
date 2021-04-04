@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="148" width="414" height="533"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="52" id="PBh-x4-fpI" customClass="OrderTableCell" customModule="RxOrder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderTableCell" rowHeight="52" id="PBh-x4-fpI" customClass="OrderTableCell" customModule="RxOrder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PBh-x4-fpI" id="i5f-LJ-Sry">
@@ -73,8 +73,16 @@
                                                 <constraint firstItem="7bv-1g-1fM" firstAttribute="leading" secondItem="bvx-cD-fL6" secondAttribute="trailing" constant="21" id="zep-bs-qw2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="countLabel" destination="rIx-b4-wdt" id="G4v-GG-xjT"/>
+                                            <outlet property="minusBtn" destination="bvx-cD-fL6" id="PXQ-bn-Ie4"/>
+                                            <outlet property="nameLabel" destination="7bv-1g-1fM" id="anV-un-jXu"/>
+                                            <outlet property="plusBtn" destination="0CB-h1-if3" id="yi3-es-JKO"/>
+                                            <outlet property="priceLabel" destination="gXp-PC-gPo" id="Ise-Hx-xTy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="268-pY-2yd">
                                 <rect key="frame" x="15" y="694" width="91" height="21"/>

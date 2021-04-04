@@ -8,5 +8,12 @@
 import UIKit
 
 class OrderTableCell: UITableViewCell {
+    static let identifier = "OrderTableCell"
+
+    @IBOutlet weak var plusBtn: UIButton!
+    @IBOutlet weak var minusBtn: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
 }
